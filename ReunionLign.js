@@ -6,16 +6,20 @@ export default class Reulign extends React.Component {
   constructor(props) {
     super(props);
   }
+  getRandomcolor = () => {
+    return "#"  + Math.floor(Math.random()*16777215).toString(16) ; 
+  }
   render() {
+    
     return (
-      <TouchableWithoutFeedback onPress={this.handleOnclick}>
+      <TouchableWithoutFeedback>
         <View style={styles.row}>
           <Icon
             style={{ width: 80 }}
             name="lens"
             size={50}
             type="material"
-            color="#b09a1e"
+            color={this.getRandomcolor()}
           />
           <View style={{ width: 250 }}>
             <Text style={styles.primaryText}>
@@ -25,7 +29,7 @@ export default class Reulign extends React.Component {
             <Text style={styles.secondaryText}>{this.props.participants}</Text>
           </View>
           <View style={styles.icon}>
-            <Icon name="delete" type="material" color="black" />
+            <Icon name="delete" type="material" color="black" onPress={(reunion) => this.props.onDelete(reunion)}  onClick={(reunion) => this.props.onDelete(reunion)} />
           </View>
         </View>
       </TouchableWithoutFeedback>
@@ -34,6 +38,9 @@ export default class Reulign extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  icon: {
+    
+  },
   row: {
     flexDirection: "row",
     alignItems: "center",

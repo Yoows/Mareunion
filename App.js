@@ -5,8 +5,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import ListReunion from "./ListReunion";
 import { Icon } from "react-native-elements";
 import AddReu from "./addReu";
+const handleFilter = () => {
+  console.log('Handle Filter clicked')
+} 
 export default function App() {
   const Stack = createStackNavigator();
+  
   return (
     <NavigationContainer initialRouteName="Ma réu">
       <Stack.Navigator>
@@ -26,12 +30,26 @@ export default function App() {
                 name="filter-list"
                 type="material"
                 color="white"
+                onPress={handleFilter}
+                onClick={handleFilter}
                 style={{ width: 45 }}
               />
             ),
           }}
         />
-        <Stack.Screen name="Ajouter une réunion" component={AddReu} />
+        <Stack.Screen
+          name="Ajouter une réunion"
+          component={AddReu}
+          options={{
+            headerStyle: {
+              backgroundColor: "#3d84f5",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
